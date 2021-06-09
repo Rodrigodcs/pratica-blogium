@@ -15,22 +15,22 @@ export default function PostShowPage() {
   const history = useHistory();
 
   useEffect(() => {
-    setPost({
-      id: 1,
-      title: 'Hello World',
-      coverUrl: 'https://miro.medium.com/max/1024/1*OohqW5DGh9CQS4hLY5FXzA.png',
-      contentPreview: 'Esta é a estrutura de um post esperado pelo front-end',
-      content: 'Este é o conteúdo do post, o que realmente vai aparecer na página do post...'
-    })
-  }, [postId]);
+    axios.get(`http://localhost:4000/posts/${postId}`).then(response => {
+      setPost(response.data)
+      console.log(response)
+  })
+  }, []);
 
   function onEditButtonClick() {
     history.push(`/posts/${postId}/edit`);
   }
 
   function onDeleteButtonClick() {
-    alert('No futuro, ao clicar neste botão o post vai ser excluído de verdade :)');
-    history.push('/');
+    axios.delete(`http://localhost:4000/posts/${postId}`).then(response =>{
+      console.log("Working")
+      history.push('/');
+    })
+    
   }
 
   if (!post) return <Spinner />;

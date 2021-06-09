@@ -3,23 +3,17 @@ import styled from 'styled-components';
 
 import Comment from './Comment';
 import AddComment from './AddComment';
+import axios from "axios"
 
 export default function PostComments({ postId }) {
   const [comments, setComments] = useState([]);
-
+console.log(postId)
   useEffect(() => {
-    setComments([{
-      id: 1,
-      postId: postId,
-      author: 'João',
-      content: 'Muito bom esse post! Tá de parabéns'
-    }, {
-      id: 2,
-      postId: postId,
-      author: 'Maria',
-      content: 'Como faz pra dar palmas?'
-    }])
-  }, [postId]);
+    axios.get(`http://localhost:4000/posts/${postId}/comments`).then(response => {
+      setComments(response.data)
+      console.log(response)
+  })
+  }, []);
   
   return (
     <Container>
