@@ -16,7 +16,7 @@ export default function NewStoryPage() {
       coverUrl,
       content
     }
-    axios.post('http://localhost:4000/posts',body).then(response =>{
+    axios.post('http://localhost:4001/posts',body).then(response =>{
       console.log("Working")
     })
 

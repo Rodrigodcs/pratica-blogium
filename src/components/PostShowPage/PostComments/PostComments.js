@@ -9,7 +9,7 @@ export default function PostComments({ postId }) {
   const [comments, setComments] = useState([]);
 console.log(postId)
   useEffect(() => {
-    axios.get(`http://localhost:4000/posts/${postId}/comments`).then(response => {
+    axios.get(`http://localhost:4001/posts/${postId}/comments`).then(response => {
       setComments(response.data)
       console.log(response)
   })

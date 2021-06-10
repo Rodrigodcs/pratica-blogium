@@ -15,7 +15,7 @@ export default function PostShowPage() {
   const history = useHistory();
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/posts/${postId}`).then(response => {
+    axios.get(`http://localhost:4001/posts/${postId}`).then(response => {
       setPost(response.data)
       console.log(response)
   })
@@ -26,7 +26,7 @@ export default function PostShowPage() {
   }
 
   function onDeleteButtonClick() {
-    axios.delete(`http://localhost:4000/posts/${postId}`).then(response =>{
+    axios.delete(`http://localhost:4001/posts/${postId}`).then(response =>{
       console.log("Working")
       history.push('/');
     })

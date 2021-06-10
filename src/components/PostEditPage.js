@@ -14,7 +14,7 @@ export default function PostEditPage() {
   const history = useHistory();
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/posts/${postId}`).then(response => {
+    axios.get(`http://localhost:4001/posts/${postId}`).then(response => {
       const post=response.data
       setPost(post);
       setTitle(post.title);
@@ -31,9 +31,10 @@ export default function PostEditPage() {
       coverUrl,
       content
     }
-    axios.put(`http://localhost:4000/posts/${postId}`,body).then(response =>{
+    axios.put(`http://localhost:4001/posts/${postId}`,body).then(response =>{
       console.log("Working")
       setSaveButtonDisable(false)
+      history.push(`/posts/${postId}`);
     })
   } 
 

@@ -13,7 +13,7 @@ export default function AddComment({ postId }) {
       author:name,
       content
     }
-    axios.post(`http://localhost:4000/posts/${postId}/comments`,body).then(response =>{
+    axios.post(`http://localhost:4001/posts/${postId}/comments`,body).then(response =>{
       console.log("Working")
     })
     setName('');
